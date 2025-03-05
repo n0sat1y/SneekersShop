@@ -8,7 +8,7 @@ class CartModel(Base):
 	__tablename__ = 'carts'
 
 	id: Mapped[intpk]
-	userId: Mapped[int]
+	userId: Mapped[int] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'))
 
 	user: Mapped[int] = relationship('UserModel', back_populates='cart')
 	cart_items = relationship('CartItemsModel', back_populates='cart')

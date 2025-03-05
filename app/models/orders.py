@@ -8,7 +8,7 @@ class OrderModel(Base):
 	__tablename__ = 'orders'
 
 	id: Mapped[intpk]
-	userId: Mapped[int]
+	userId: Mapped[int] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'))
 	totalPrice: Mapped[int]
 	created_at: Mapped[created_at]
 

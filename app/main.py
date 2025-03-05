@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 import uvicorn
 from router import router
-from models import ProductModel, UserModel, ReviewModel
 from core.batabase import start_db
 
 @asynccontextmanager
