@@ -1,8 +1,7 @@
 import pytest
 
 from app.core.batabase import engine, Base, session_fabric
-from app.core.settings import settings
-from app.models import *
+
 
 @pytest.fixture(scope='session', autouse=True)
 async def startup_database():
@@ -18,3 +17,4 @@ async def startup_database():
 async def session():
 	async with session_fabric() as session:
 		yield session
+		await session.rollback()

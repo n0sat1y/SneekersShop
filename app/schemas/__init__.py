@@ -1,5 +1,7 @@
 from .products import *
 
 __all__ = [
-	'ProductServices'
+	'ProductServices',
+	'IdSchema',
+	'ProductCreateSchema',
 ]

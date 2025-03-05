@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 
-class ProductSchema(BaseModel):
-	id: int
+class ProductCreateSchema(BaseModel):
 	name: str
 	description: str
 	colors: list[str]
@@ -9,3 +8,9 @@ class ProductSchema(BaseModel):
 	gender: str
 	sizes: list[int]
 	price: int
+
+class ProductSchema(ProductCreateSchema):
+	id: int
+	
+class IdSchema(BaseModel):
+	id: int
