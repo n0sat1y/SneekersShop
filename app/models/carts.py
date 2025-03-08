@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import ARRAY, ForeignKey, String, Integer
-from models import intpk, created_at
+from sqlalchemy import ForeignKey
+
+from models import intpk
 from core.batabase import Base
 
 

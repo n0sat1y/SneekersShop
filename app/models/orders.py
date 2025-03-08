@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import ARRAY, ForeignKey, String, Integer
+from sqlalchemy import ForeignKey
 from models import intpk, created_at
 from core.batabase import Base
 
