@@ -1,4 +1,4 @@
-from core.batabase import session
+from core.database import session
 from models import ProductModel
 from schemas import ProductCreateSchema
 

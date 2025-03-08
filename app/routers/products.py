@@ -2,10 +2,10 @@ from fastapi import APIRouter, Depends, HTTPException
 
 
 from schemas import ProductSchema, IdSchema, ProductCreateSchema
-from core.batabase import SessionDep
+from core.database import SessionDep
 from repositories import ProductRepository
 
-router = APIRouter()
+router = APIRouter(tags=['Products'])
 
 
 @router.get("/products", response_model=list[ProductSchema])

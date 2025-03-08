@@ -1,4 +1,4 @@
-from core.batabase import Base
+from core.database import Base
 from models import intpk, created_at
 
 from sqlalchemy.orm import Mapped, relationship, mapped_column
@@ -10,7 +10,7 @@ class UserModel(Base):
 
 	id: Mapped[intpk]
 	name: Mapped[str]
-	email: Mapped[str]
+	email: Mapped[str] = mapped_column(unique=True)
 	password: Mapped[bytes]
 	created_at: Mapped[created_at]
 

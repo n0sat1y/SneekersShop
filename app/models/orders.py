@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import ForeignKey
 from models import intpk, created_at
-from core.batabase import Base
+from core.database import Base
 
 
 class OrderModel(Base):

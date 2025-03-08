@@ -1,7 +1,12 @@
 from .products import *
+from .users import *
 
 __all__ = [
-	'ProductServices',
 	'IdSchema',
 	'ProductCreateSchema',
+	'CreateUserSchema',
+	'GetUserSchema',
+	'LoginUserSchema',
+	'BaseUserSchema',
+	'TokenSchema',
 ]

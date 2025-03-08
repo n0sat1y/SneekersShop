@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import ARRAY, String, Integer
 from typing import Optional
-from core.batabase import Base
+from core.database import Base
 from models import intpk
 
 

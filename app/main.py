@@ -1,12 +1,11 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 import uvicorn
-from router import router
-from core.batabase import start_db, dispose_engine
+from routers import router
+from core.database import start_db, dispose_engine
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # await start_db()  
     yield
     print('Disposing engine')
     await dispose_engine()
@@ -17,7 +16,7 @@ app.include_router(router)
 
 if __name__ == '__main__':
     uvicorn.run(
-        "main:app",  # localhost
+        "main:app",
         port=8000,
-        reload=True  # enable auto-reload
+        reload=True
     )
