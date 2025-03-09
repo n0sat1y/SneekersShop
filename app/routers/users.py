@@ -26,12 +26,13 @@ async def login_user(session: SessionDep, user: LoginUserSchema):
 		raise exception
 	if not validate_password(user.password, usr.password):
 		raise exception
-	access = encode_access_jwt({'sub': usr.id})
-	refresh = encode_refresh_jwt({'sub': usr.id})
+	access = encode_access_jwt({'sub': str(usr.id)})
+	refresh = encode_refresh_jwt({'sub': str(usr.id)})
 	return TokenSchema(access=access, refresh=refresh)
 
 @router.get('/users/me')
 async def get_user(creds: AuthorizationDep):
-	token = validate_token_type(creds.credentials, 'access')
-	user_id = decode_jwt(token)['id']
-	return user_id
+	decoded_token = decode_jwt(creds.credentials)
+	token = validate_token_type(decoded_token, 'access')
+	user_id = token.get('sub')
+	return {'user_id': user_id}
