@@ -1,3 +1,4 @@
+from datetime import datetime
 from pydantic import BaseModel, EmailStr
 
 class BaseUserSchema(BaseModel):
@@ -10,6 +11,7 @@ class CreateUserSchema(BaseUserSchema):
 class GetUserSchema(BaseUserSchema):
 	id: int
 	name: str
+	created_at: datetime
 
 class LoginUserSchema(BaseUserSchema):
 	password: str

@@ -2,6 +2,7 @@ from typing import Annotated
 from fastapi import APIRouter, HTTPException, Depends
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
+from schemas.users import GetUserSchema
 from schemas import CreateUserSchema, LoginUserSchema, TokenSchema
 from repositories import UserRepository
 from core.database import SessionDep
@@ -30,9 +31,15 @@ async def login_user(session: SessionDep, user: LoginUserSchema):
 	refresh = encode_refresh_jwt({'sub': str(usr.id)})
 	return TokenSchema(access=access, refresh=refresh)
 
-@router.get('/users/me')
-async def get_user(creds: AuthorizationDep):
+@router.get('/users/me', response_model=GetUserSchema)
+async def get_user(
+	session: SessionDep,
+	creds: AuthorizationDep
+):
 	decoded_token = decode_jwt(creds.credentials)
 	token = validate_token_type(decoded_token, 'access')
 	user_id = token.get('sub')
-	return {'user_id': user_id}
+	if not user_id:
+		raise HTTPException(status_code=401, detail='Invalid token')
+	user = await UserRepository.get_user_by_id(session, int(user_id))
+	return GetUserSchema(**user.__dict__)

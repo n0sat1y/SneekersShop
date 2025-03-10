@@ -22,7 +22,7 @@ class UserRepository:
 	@classmethod
 	async def get_user_by_id(cls, session: AsyncSession, id: int):
 		try:
-			stmt = select(UserModel).where(UserModel.email == id)
+			stmt = select(UserModel).where(UserModel.id == id)
 			result = await session.execute(stmt)
 			return result.scalar_one_or_none()
 		except Exception as e:
