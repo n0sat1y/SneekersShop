@@ -1,8 +1,8 @@
 """first migration
 
-Revision ID: 0878661a1c67
+Revision ID: 5252ac38d94f
 Revises: 
-Create Date: 2025-03-08 08:51:41.221381
+Create Date: 2025-03-10 08:55:19.086072
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '0878661a1c67'
+revision: str = '5252ac38d94f'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -36,8 +36,9 @@ def upgrade() -> None:
     sa.Column('name', sa.String(), nullable=False),
     sa.Column('email', sa.String(), nullable=False),
     sa.Column('password', sa.LargeBinary(), nullable=False),
-    sa.Column('created_at', sa.String(), server_default='now()', nullable=False),
-    sa.PrimaryKeyConstraint('id')
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text("TIMEZONE('UTC', now())"), nullable=False),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('email')
     )
     op.create_table('carts',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -49,7 +50,7 @@ def upgrade() -> None:
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('totalPrice', sa.Integer(), nullable=False),
-    sa.Column('created_at', sa.String(), server_default='now()', nullable=False),
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text("TIMEZONE('UTC', now())"), nullable=False),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
@@ -57,7 +58,7 @@ def upgrade() -> None:
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('rating', sa.Integer(), nullable=False),
     sa.Column('comment', sa.String(), nullable=False),
-    sa.Column('created_at', sa.String(), server_default='now()', nullable=False),
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text("TIMEZONE('UTC', now())"), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('productId', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['productId'], ['products.id'], ondelete='CASCADE'),

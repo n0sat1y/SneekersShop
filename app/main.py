@@ -6,6 +6,7 @@ from core.database import start_db, dispose_engine
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    # await start_db()
     yield
     print('Disposing engine')
     await dispose_engine()

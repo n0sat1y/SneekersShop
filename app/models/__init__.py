@@ -1,4 +1,6 @@
+from datetime import datetime
 from typing import Annotated
+from sqlalchemy import text, DateTime, TIMESTAMP
 from sqlalchemy.orm import mapped_column
 
 __all__ = [
@@ -12,8 +14,14 @@ __all__ = [
     'intpk',
     'created_at'
 ]
+
 intpk = Annotated[int, mapped_column(primary_key=True)]
-created_at = Annotated[str, mapped_column(server_default='now()')]
+created_at = Annotated[
+    datetime,
+    mapped_column(
+        server_default=text("TIMEZONE('UTC', now())")
+    )
+]
 
 # Import models after defining the types
 from .products import ProductModel
