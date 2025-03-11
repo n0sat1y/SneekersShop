@@ -9,7 +9,7 @@ class ProductModel(Base):
     __tablename__ = 'products'
 
     id: Mapped[intpk]
-    name: Mapped[str]
+    name: Mapped[str] = mapped_column(unique=True)
     description: Mapped[Optional[str]]
     colors: Mapped[list[str]] = mapped_column(ARRAY(String))
     category: Mapped[str]

@@ -1,4 +1,3 @@
-from typing import Annotated
 from fastapi import APIRouter, HTTPException, Depends
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
@@ -9,8 +8,8 @@ from core.database import SessionDep
 from utils import encode_access_jwt, encode_refresh_jwt, validate_password, decode_jwt, validate_token_type
 
 router = APIRouter(tags=['Users'])
+
 bearer = HTTPBearer()
-AuthorizationDep = Annotated[HTTPAuthorizationCredentials, Depends(bearer)]
 
 @router.post('/create_user')
 async def create_user(user: CreateUserSchema, session: SessionDep):
@@ -34,7 +33,7 @@ async def login_user(session: SessionDep, user: LoginUserSchema):
 @router.get('/users/me', response_model=GetUserSchema)
 async def get_user(
 	session: SessionDep,
-	creds: AuthorizationDep
+	creds: HTTPAuthorizationCredentials = Depends(bearer)
 ):
 	decoded_token = decode_jwt(creds.credentials)
 	token = validate_token_type(decoded_token, 'access')

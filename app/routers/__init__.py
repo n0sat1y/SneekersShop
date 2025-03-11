@@ -1,10 +1,17 @@
-__all__ = ['router']
+__all__ = [
+	'router', 
+]
 
-
+from typing import Annotated
 from fastapi import APIRouter
+
 from .products import router as product_router
 from .users import router as user_router
+from .orders import router as order_router
+
+
 
 router = APIRouter(prefix='/api/v1')
 router.include_router(product_router)
 router.include_router(user_router)
+router.include_router(order_router)
