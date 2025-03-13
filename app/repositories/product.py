@@ -26,6 +26,18 @@ class ProductRepository:
 			raise HTTPException(status_code=500, detail=str(e))
 		
 	@classmethod
+	async def get_product_by_name(cls, session: AsyncSession, product_name: str):
+		try:
+			query = select(ProductModel).where(ProductModel.name == product_name)
+			result = await session.execute(query)
+			product = result.scalars().first()
+			if not product:
+				raise HTTPException(status_code=404, detail='Product not found')
+			return product
+		except Exception as e:
+			raise HTTPException(status_code=500, detail=str(e))
+		
+	@classmethod
 	async def create_product(cls, session: AsyncSession, product: ProductCreateSchema):
 		try:
 			product_dict = product.model_dump()

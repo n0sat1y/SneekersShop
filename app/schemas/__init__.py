@@ -12,4 +12,6 @@ __all__ = [
 	'TokenSchema',
 	'OrderItemSchema', 
 	'OrderSchema',
+	'CreateOrderSchema',
+	'CreateItemOrderSchema',
 ]

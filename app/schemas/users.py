@@ -17,6 +17,6 @@ class LoginUserSchema(BaseUserSchema):
 	password: str
 
 class TokenSchema(BaseModel):
-	access: str
-	refresh: str
-	token_type: str = 'Bearer'
+	access: str | None = None
+	refresh: str | None = None
+	token_type: str | None = 'Bearer'

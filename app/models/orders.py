@@ -10,6 +10,7 @@ class OrderModel(Base):
 	id: Mapped[intpk]
 	userId: Mapped[int] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'))
 	totalPrice: Mapped[int]
+	status: Mapped[str]
 	created_at: Mapped[created_at]
 
 	user = relationship('UserModel', back_populates='orders')

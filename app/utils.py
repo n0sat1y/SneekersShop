@@ -50,9 +50,11 @@ def decode_jwt(
 	return data
 
 def validate_token_type(
-		token: str, 
+		token: str | dict, 
 		token_type_to_validate: str
 	):
+	if type(token) == str:
+		token = decode_jwt(token)
 	token_type = token.get('type')
 	if token_type != token_type_to_validate:
 		raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Invalid token type')

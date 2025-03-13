@@ -18,5 +18,16 @@ class OrderSchema(BaseModel):
 	products: list[OrderItemSchema]
 	createdAt: datetime
 	id: int
-	user_id: int
+	userId: int
+	status: str
+
+class CreateItemOrderSchema(BaseModel):
+	size: int
+	color: str
+	name: str
+	quantity: int
+
+class CreateOrderSchema(BaseModel):
+	products: list[CreateItemOrderSchema]
+	totalPrice: int
 	status: str
