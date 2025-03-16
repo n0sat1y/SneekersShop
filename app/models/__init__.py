@@ -1,10 +1,12 @@
 from datetime import datetime
 from typing import Annotated
-from sqlalchemy import text, TIMESTAMP
+import uuid
+from sqlalchemy import text, TIMESTAMP, UUID
 from sqlalchemy.orm import mapped_column
 
 # Определяем базовые типы
 intpk = Annotated[int, mapped_column(primary_key=True)]
+uuidpk = Annotated[uuid.UUID, mapped_column(UUID(as_uuid=True), primary_key=True)]
 created_at = Annotated[
     datetime,
     mapped_column(

@@ -22,3 +22,8 @@ class ReviewRepository:
 			return review_model
 		except Exception as e:
 			raise HTTPException(status_code=500, detail=str(e))
+	
+	@classmethod
+	async def get_reviews(cls, session: AsyncSession):
+		result = await session.execute(select(ReviewModel))
+		return result.scalars().all()
