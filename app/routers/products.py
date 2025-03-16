@@ -23,6 +23,6 @@ async def get_product(session: SessionDep, product_id: int) -> ProductSchema:
 	return result
 
 @router.post("/products", response_model=ProductSchema)
-async def create_product(session: SessionDep, product: ProductCreateSchema = Depends()) -> ProductSchema:
+async def create_product(session: SessionDep, product: ProductCreateSchema) -> ProductSchema:
 	result = await ProductRepository.create_product(session, product)
 	return result
