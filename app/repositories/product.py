@@ -1,6 +1,6 @@
-from core.database import session
-from models import ProductModel
-from schemas import ProductCreateSchema
+from app.core.database import session
+from app.models import ProductModel
+from app.schemas import ProductCreateSchema
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession

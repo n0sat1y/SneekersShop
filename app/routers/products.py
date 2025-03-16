@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException
 
 
-from schemas import ProductSchema, IdSchema, ProductCreateSchema
-from core.database import SessionDep
-from repositories import ProductRepository
+from app.schemas import ProductSchema, IdSchema, ProductCreateSchema
+from app.core.database import SessionDep
+from app.repositories import ProductRepository
 
 router = APIRouter(tags=['Products'])
 

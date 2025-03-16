@@ -4,7 +4,7 @@ from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy import MetaData
 from fastapi import Depends
 
-from .settings import settings
+from app.core.settings import settings
 
 engine = create_async_engine(
 	url=settings.DB_URL,

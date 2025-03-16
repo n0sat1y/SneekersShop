@@ -2,7 +2,7 @@ from fastapi import Depends, HTTPException
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 import jwt
 
-from utils import validate_token_type, decode_jwt
+from app.utils import validate_token_type, decode_jwt
 
 bearer = HTTPBearer()
 

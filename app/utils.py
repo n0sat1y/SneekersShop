@@ -3,7 +3,7 @@ from fastapi import HTTPException, status
 import jwt
 from datetime import datetime, timedelta
 
-from core.keys import public_key_obj, private_key_obj
+from app.core.keys import public_key_obj, private_key_obj
 
 def hash_password(password: str) -> bytes:
 	salt = bcrypt.gensalt()

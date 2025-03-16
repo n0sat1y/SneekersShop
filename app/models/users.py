@@ -1,5 +1,5 @@
-from core.database import Base
-from models import intpk, created_at, uuidpk
+from app.core.database import Base
+from app.models import intpk, created_at, uuidpk
 
 from sqlalchemy.orm import Mapped, relationship, mapped_column
 from sqlalchemy import ForeignKey

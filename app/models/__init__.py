@@ -25,10 +25,10 @@ created_at = Annotated[
 ]
 
 # Сначала импортируем модели
-from .products import ProductModel
-from .users import UserModel, ReviewModel
-from .orders import OrderModel, OrderItemsModel
-from .carts import CartModel, CartItemsModel
+from app.models.products import ProductModel
+from app.models.users import UserModel, ReviewModel
+from app.models.orders import OrderModel, OrderItemsModel
+from app.models.carts import CartModel, CartItemsModel
 
 # Потом объявляем что экспортировать
 __all__ = [

@@ -3,9 +3,9 @@ from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from models import OrderModel, OrderItemsModel
-from schemas import CreateOrderSchema
-from repositories import ProductRepository
+from app.models import OrderModel, OrderItemsModel
+from app.schemas import CreateOrderSchema
+from app.repositories import ProductRepository
 import uuid
 
 

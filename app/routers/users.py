@@ -2,11 +2,11 @@ from fastapi import APIRouter, HTTPException, Depends
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 import jwt
 
-from schemas.users import GetUserSchema
-from schemas import CreateUserSchema, LoginUserSchema, TokenSchema
-from repositories import UserRepository
-from core.database import SessionDep
-from utils import encode_access_jwt, encode_refresh_jwt, validate_password, decode_jwt, validate_token_type
+from app.schemas.users import GetUserSchema
+from app.schemas import CreateUserSchema, LoginUserSchema, TokenSchema
+from app.repositories import UserRepository
+from app.core.database import SessionDep
+from app.utils import encode_access_jwt, encode_refresh_jwt, validate_password, decode_jwt, validate_token_type
 
 from .deps import token_dep, bearer
 

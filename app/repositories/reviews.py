@@ -3,8 +3,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import HTTPException
 import uuid
 
-from models import ReviewModel
-from schemas import CreateReviewSchema
+from app.models import ReviewModel
+from app.schemas import CreateReviewSchema
 
 
 class ReviewRepository:

@@ -1,7 +1,7 @@
-from .products import *
-from .users import *
-from .orders import *
-from .reviews import *
+from app.schemas.products import *
+from app.schemas.users import *
+from app.schemas.orders import *
+from app.schemas.reviews import *
 
 __all__ = [
 	'IdSchema',

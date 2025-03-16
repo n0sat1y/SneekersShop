@@ -2,10 +2,10 @@ import uuid
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
-from core.database import SessionDep
-from schemas import CreateItemOrderSchema, OrderSchema,CreateOrderSchema, OrderItemSchema
-from utils import decode_jwt, validate_token_type
-from repositories import OrderRepository, ProductRepository
+from app.core.database import SessionDep
+from app.schemas import CreateItemOrderSchema, OrderSchema,CreateOrderSchema, OrderItemSchema
+from app.utils import decode_jwt, validate_token_type
+from app.repositories import OrderRepository, ProductRepository
 
 from .deps import token_dep
 

@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException
 
-from .deps import token_dep
-from core.database import SessionDep
-from schemas import CreateReviewSchema, ReviewSchema
-from repositories import ReviewRepository, UserRepository
+from app.routers.deps import token_dep
+from app.core.database import SessionDep
+from app.schemas import CreateReviewSchema, ReviewSchema
+from app.repositories import ReviewRepository, UserRepository
 
 router = APIRouter(tags=['Reviews'])
 

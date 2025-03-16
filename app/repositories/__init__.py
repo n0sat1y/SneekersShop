@@ -1,7 +1,7 @@
-from .product import ProductRepository
-from .users import UserRepository
-from .orders import OrderRepository
-from .reviews import ReviewRepository
+from app.repositories.product import ProductRepository
+from app.repositories.users import UserRepository
+from app.repositories.orders import OrderRepository
+from app.repositories.reviews import ReviewRepository
 
 __all__ = [
 	'ProductRepository',

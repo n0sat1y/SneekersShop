@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import ForeignKey
 
-from models import intpk, uuidpk
-from core.database import Base
+from app.models import intpk, uuidpk
+from app.core.database import Base
 import uuid
 
 

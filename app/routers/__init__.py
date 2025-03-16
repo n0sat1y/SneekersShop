@@ -5,10 +5,10 @@ __all__ = [
 from typing import Annotated
 from fastapi import APIRouter
 
-from .products import router as product_router
-from .users import router as user_router
-from .orders import router as order_router
-from .reviews import router as review_router
+from app.routers.products import router as product_router
+from app.routers.users import router as user_router
+from app.routers.orders import router as order_router
+from app.routers.reviews import router as review_router
 
 
 

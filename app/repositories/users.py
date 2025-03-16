@@ -1,7 +1,7 @@
-from core.database import session
-from models import UserModel
-from schemas import *
-from utils import hash_password, validate_password
+from app.core.database import session
+from app.models import UserModel
+from app.schemas import *
+from app.utils import hash_password, validate_password
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
