@@ -6,11 +6,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from models import OrderModel, OrderItemsModel
 from schemas import CreateOrderSchema
 from repositories import ProductRepository
+import uuid
 
 
 class OrderRepository:
 	@classmethod
-	async def get_orders(cls, session: AsyncSession, user_id: int):
+	async def get_orders(cls, session: AsyncSession, user_id: uuid.UUID):
 		try:
 			query = select(OrderModel).options(selectinload(OrderModel.order_items)).where(OrderModel.userId == user_id)
 			result = await session.execute(query)
@@ -22,7 +23,7 @@ class OrderRepository:
 	async def create_order(cls, 
 		session: AsyncSession, 
 		order: CreateOrderSchema,
-		user_id: int):
+		user_id: uuid.UUID):
 		try:
 			order_model = OrderModel(
 				userId=user_id, 
@@ -52,7 +53,7 @@ class OrderRepository:
 	@classmethod
 	async def get_order_by_id(cls, 
 		session: AsyncSession, 
-		order_id: int
+		order_id: uuid.UUID
 		):
 		order_query = (
 			select(OrderModel)

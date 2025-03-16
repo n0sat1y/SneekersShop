@@ -1,5 +1,5 @@
 from core.database import Base
-from models import intpk, created_at
+from models import intpk, created_at, uuidpk
 
 from sqlalchemy.orm import Mapped, relationship, mapped_column
 from sqlalchemy import ForeignKey
@@ -8,7 +8,7 @@ from sqlalchemy import ForeignKey
 class UserModel(Base):
 	__tablename__ = 'users'
 
-	id: Mapped[intpk]
+	id: Mapped[uuidpk]
 	name: Mapped[str]
 	email: Mapped[str] = mapped_column(unique=True)
 	password: Mapped[bytes]
@@ -22,7 +22,7 @@ class UserModel(Base):
 class ReviewModel(Base):
 	__tablename__ = 'reviews'
 
-	id: Mapped[intpk]
+	id: Mapped[uuidpk]
 	rating: Mapped[int]
 	comment: Mapped[str]
 	created_at: Mapped[created_at]

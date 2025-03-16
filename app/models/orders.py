@@ -1,13 +1,13 @@
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import ForeignKey
-from models import intpk, created_at
+from models import intpk, created_at, uuidpk
 from core.database import Base
 
 
 class OrderModel(Base):
 	__tablename__ = 'orders'
 
-	id: Mapped[intpk]
+	id: Mapped[uuidpk]
 	userId: Mapped[int] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'))
 	totalPrice: Mapped[int]
 	status: Mapped[str]

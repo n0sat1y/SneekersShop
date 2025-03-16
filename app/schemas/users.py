@@ -1,4 +1,5 @@
 from datetime import datetime
+import uuid
 from pydantic import BaseModel, EmailStr
 
 class BaseUserSchema(BaseModel):
@@ -9,7 +10,7 @@ class CreateUserSchema(BaseUserSchema):
 	password: str
 
 class GetUserSchema(BaseUserSchema):
-	id: int
+	id: uuid.UUID
 	name: str
 	created_at: datetime
 

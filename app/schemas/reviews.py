@@ -1,4 +1,5 @@
 from datetime import datetime
+import uuid
 from pydantic import BaseModel
 
 class CreateReviewSchema(BaseModel):
@@ -7,7 +8,7 @@ class CreateReviewSchema(BaseModel):
 	rating: int
 
 class ReviewSchema(CreateReviewSchema):
-	id: int
-	userId: int
+	id: uuid.UUID
+	userId: uuid.UUID
 	createdAt: datetime
 	userName: str

@@ -6,6 +6,7 @@ from utils import hash_password, validate_password
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import HTTPException
+import uuid
 
 
 class UserRepository:
@@ -20,7 +21,7 @@ class UserRepository:
 
 
 	@classmethod
-	async def get_user_by_id(cls, session: AsyncSession, id: int):
+	async def get_user_by_id(cls, session: AsyncSession, id: uuid.UUID):
 		try:
 			stmt = select(UserModel).where(UserModel.id == id)
 			result = await session.execute(stmt)

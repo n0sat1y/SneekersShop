@@ -15,6 +15,6 @@ def token_dep(
 		user_id = token.get('sub')
 		if not user_id:
 			raise HTTPException(status_code=401, detail='Invalid token')
-		return int(user_id)
+		return user_id
 	except jwt.exceptions.ExpiredSignatureError as e:
 		raise HTTPException(status_code=401, detail='Token has expired')

@@ -1,4 +1,5 @@
 from datetime import datetime
+import uuid
 from pydantic import BaseModel
 
 
@@ -17,8 +18,8 @@ class OrderSchema(BaseModel):
 	totalPrice: int
 	products: list[OrderItemSchema]
 	createdAt: datetime
-	id: int
-	userId: int
+	id: uuid.UUID
+	userId: uuid.UUID
 	status: str
 
 class CreateItemOrderSchema(BaseModel):

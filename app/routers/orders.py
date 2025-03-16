@@ -1,3 +1,4 @@
+import uuid
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
@@ -50,7 +51,7 @@ async def get_user_orders(
 @router.get('/order')
 async def get_order(
 	session: SessionDep,
-	order_id: int,
+	order_id: uuid.UUID,
 	user = Depends(token_dep)
 ) -> OrderSchema:
 	order = await OrderRepository.get_order_by_id(session, order_id)

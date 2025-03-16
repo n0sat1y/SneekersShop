@@ -1,6 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import HTTPException
+import uuid
 
 from models import ReviewModel
 from schemas import CreateReviewSchema
@@ -11,7 +12,7 @@ class ReviewRepository:
 	async def create_review(cls, 
 		session: AsyncSession, 
 		review: CreateReviewSchema, 
-		user_id: int
+		user_id: uuid.UUID
 	) -> ReviewModel:
 		try:
 			review_dict = review.model_dump()

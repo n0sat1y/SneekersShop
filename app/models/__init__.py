@@ -6,7 +6,16 @@ from sqlalchemy.orm import mapped_column
 
 # Определяем базовые типы
 intpk = Annotated[int, mapped_column(primary_key=True)]
-uuidpk = Annotated[uuid.UUID, mapped_column(UUID(as_uuid=True), primary_key=True)]
+uuidpk = Annotated[
+    uuid.UUID,
+    mapped_column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        default=uuid.uuid4,  # Автоматическая генерация UUID
+        unique=True,  # Гарантия уникальности
+        nullable=False  # Поле не может быть NULL
+    )
+]
 created_at = Annotated[
     datetime,
     mapped_column(
