@@ -9,7 +9,7 @@ class OrderItemSchema(BaseModel):
 	price: int
 	category: str
 	gender: str
-	totalPrice: int
+	# totalPrice: int
 	name: str
 	quantity: int
 

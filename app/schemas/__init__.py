@@ -1,6 +1,7 @@
 from .products import *
 from .users import *
 from .orders import *
+from .reviews import *
 
 __all__ = [
 	'IdSchema',
@@ -14,4 +15,6 @@ __all__ = [
 	'OrderSchema',
 	'CreateOrderSchema',
 	'CreateItemOrderSchema',
+	'CreateReviewSchema',
+	'ReviewSchema',
 ]
