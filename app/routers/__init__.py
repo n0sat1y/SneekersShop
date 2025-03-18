@@ -9,6 +9,7 @@ from app.routers.products import router as product_router
 from app.routers.users import router as user_router
 from app.routers.orders import router as order_router
 from app.routers.reviews import router as review_router
+from app.routers.carts import router as cart_router
 
 
 
@@ -17,3 +18,4 @@ router.include_router(product_router)
 router.include_router(user_router)
 router.include_router(order_router)
 router.include_router(review_router)
+router.include_router(cart_router)
