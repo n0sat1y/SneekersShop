@@ -17,6 +17,6 @@ class ProductModel(Base):
     sizes: Mapped[list[int]] = mapped_column(ARRAY(Integer))
     price: Mapped[int]
     # relationships
-    cart_items = relationship('CartItemsModel', back_populates='product')
+    cart = relationship('CartModel', back_populates='product')
     reviews = relationship('ReviewModel', back_populates='product')
     order_items = relationship('OrderItemsModel', back_populates='product')
