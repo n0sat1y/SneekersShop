@@ -28,7 +28,7 @@ created_at = Annotated[
 from app.models.products import ProductModel
 from app.models.users import UserModel, ReviewModel
 from app.models.orders import OrderModel, OrderItemsModel
-from app.models.carts import CartModel, CartItemsModel
+from app.models.carts import CartModel
 
 # Потом объявляем что экспортировать
 __all__ = [
@@ -36,7 +36,6 @@ __all__ = [
     'UserModel', 
     'ReviewModel',
     'CartModel',
-    'CartItemsModel',
     'OrderModel',
     'OrderItemsModel',
 ]
